@@ -8,6 +8,10 @@ const jwtSecret = process.env.JWT_SECRET;
 const corsOrigin = process.env.CORS_ORIGIN || "http://localhost:5000,http://127.0.0.1:5000";
 const databaseUrl = process.env.DATABASE_URL;
 const googleClientId = process.env.GOOGLE_CLIENT_ID || "";
+const demoLoginEnabled = process.env.DEMO_LOGIN_ENABLED === "true";
+const demoLoginEmail = (process.env.DEMO_LOGIN_EMAIL || "demo@curaayur.ai").trim().toLowerCase();
+const demoLoginPassword = process.env.DEMO_LOGIN_PASSWORD || "";
+const demoLoginName = (process.env.DEMO_LOGIN_NAME || "Demo User").trim();
 
 if (!jwtSecret || jwtSecret.length < 32) {
   throw new Error("JWT_SECRET is required and must be at least 32 characters.");
@@ -32,6 +36,10 @@ module.exports = {
   corsOrigin,
   databaseUrl,
   googleClientId,
+  demoLoginEnabled,
+  demoLoginEmail,
+  demoLoginPassword,
+  demoLoginName,
   databaseSsl: process.env.DATABASE_SSL === "true",
   cookieSecure: process.env.COOKIE_SECURE === "true" || nodeEnv === "production",
   dataFilePath: path.join(__dirname, "..", "data", "store.json"),

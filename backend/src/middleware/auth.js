@@ -1,5 +1,6 @@
 const { verifyAuthToken } = require("../utils/jwt");
 const { findUserById } = require("../store");
+const { demoLoginEnabled } = require("../config");
 
 const requireAuth = async (req, res, next) => {
   const authHeader = req.headers.authorization || "";
@@ -13,6 +14,17 @@ const requireAuth = async (req, res, next) => {
 
   try {
     const payload = verifyAuthToken(authToken);
+
+    if (demoLoginEnabled && payload.demo === true) {
+      req.user = {
+        id: payload.sub,
+        name: payload.name || "Demo User",
+        email: payload.email,
+      };
+
+      return next();
+    }
+
     const user = await findUserById(payload.sub);
 
     if (!user) {

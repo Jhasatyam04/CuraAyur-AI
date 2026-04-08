@@ -5,7 +5,15 @@ const { randomUUID } = require("crypto");
 const { createUser, findUserByEmail } = require("../store");
 const { signAuthToken } = require("../utils/jwt");
 const { requireAuth } = require("../middleware/auth");
-const { jwtExpiresIn, cookieSecure, googleClientId } = require("../config");
+const {
+  jwtExpiresIn,
+  cookieSecure,
+  googleClientId,
+  demoLoginEnabled,
+  demoLoginEmail,
+  demoLoginPassword,
+  demoLoginName,
+} = require("../config");
 
 const router = express.Router();
 
@@ -132,12 +140,36 @@ router.post("/login", async (req, res) => {
     return res.status(400).json({ message: "email and password are required" });
   }
 
-  const user = await findUserByEmail(String(email));
+  const normalizedEmail = String(email).trim().toLowerCase();
+  const rawPassword = String(password);
+
+  if (demoLoginEnabled && demoLoginPassword && normalizedEmail === demoLoginEmail && rawPassword === demoLoginPassword) {
+    const token = signAuthToken({
+      sub: "demo-user",
+      email: demoLoginEmail,
+      name: demoLoginName,
+      demo: true,
+    });
+
+    attachAuthCookie(res, token);
+
+    return res.json({
+      message: "Login successful",
+      user: {
+        id: "demo-user",
+        name: demoLoginName,
+        email: demoLoginEmail,
+      },
+      expiresInSec: 12 * 60 * 60,
+    });
+  }
+
+  const user = await findUserByEmail(normalizedEmail);
   if (!user) {
     return res.status(401).json({ message: "Invalid credentials" });
   }
 
-  const isValid = await bcrypt.compare(String(password), user.passwordHash);
+  const isValid = await bcrypt.compare(rawPassword, user.passwordHash);
   if (!isValid) {
     return res.status(401).json({ message: "Invalid credentials" });
   }

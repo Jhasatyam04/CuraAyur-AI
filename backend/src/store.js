@@ -2,10 +2,16 @@ const { Pool } = require("pg");
 const { randomUUID } = require("crypto");
 const { databaseUrl, databaseSsl } = require("./config");
 
-const pool = new Pool({
-  connectionString: databaseUrl,
-  ssl: databaseSsl ? { rejectUnauthorized: false } : false,
-});
+let pool;
+
+if (databaseUrl && databaseUrl.trim()) {
+  pool = new Pool({
+    connectionString: databaseUrl,
+    ssl: databaseSsl ? { rejectUnauthorized: false } : false,
+  });
+} else {
+  pool = null;
+}
 
 let useInMemoryStore = false;
 const memoryStore = {
@@ -23,6 +29,13 @@ const mapUser = (row) => ({
 
 const initStore = async () => {
   try {
+    if (!pool) {
+      useInMemoryStore = true;
+      // eslint-disable-next-line no-console
+      console.warn("No DATABASE_URL configured; using in-memory store for this session.");
+      return;
+    }
+
     await pool.query(`
       CREATE TABLE IF NOT EXISTS users (
         id UUID PRIMARY KEY,

@@ -1,5 +1,4 @@
 const express = require("express");
-const { requireAuth } = require("../middleware/auth");
 const { savePrediction, getPredictionsByUser } = require("../store");
 const {
   cardioEngine,
@@ -144,8 +143,6 @@ const recommendationMap = {
   },
 };
 
-router.use(requireAuth);
-
 router.post("/:model", async (req, res) => {
   const model = req.params.model;
   const engine = modelMap[model];
@@ -169,13 +166,6 @@ router.post("/:model", async (req, res) => {
       clinical: recommendations.clinical,
       generatedAt: new Date().toISOString(),
     };
-
-    await savePrediction({
-      userId: req.user.id,
-      model,
-      input: req.body || {},
-      output: response,
-    });
 
     return res.json(response);
   } catch {

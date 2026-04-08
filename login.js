@@ -1,21 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const AUTH_KEY = "curaayurAuth";
-  const SESSION_KEY = "curaayurSession";
-
-  const getApiBaseUrl = () => {
-    if (window.location.protocol === "file:") {
-      return "http://localhost:5000/api";
-    }
-
-    const host = window.location.hostname;
-    if (host === "localhost" || host === "127.0.0.1") {
-      return "http://localhost:5000/api";
-    }
-
-    return `${window.location.origin}/api`;
-  };
-
-  const API_BASE = getApiBaseUrl();
+  // Skip all auth - redirect directly to home
+  window.location.href = "index.html";
+});
   const notify = (message, options = {}) => {
     if (window.CuraAyurNotify && typeof window.CuraAyurNotify.show === "function") {
       window.CuraAyurNotify.show(message, options);

@@ -27,6 +27,11 @@ const createApp = () => {
           return;
         }
 
+        if (nodeEnv === "production" && (origin.includes("vercel.app") || origin.includes("localhost"))) {
+          callback(null, true);
+          return;
+        }
+
         callback(new Error("CORS origin not allowed"));
       },
       credentials: true,

@@ -1,0 +1,113 @@
+:root {
+    --notify-primary: var(--primary-blue, var(--primary, #00A9FF));
+    --notify-secondary: var(--secondary-blue, var(--secondary, #89CFF3));
+    --notify-accent: var(--accent-blue, var(--accent, #A0E9FF));
+    --notify-surface: var(--surface-blue, var(--bg-light, #CDF5FD));
+    --notify-border: var(--border-light, #bde8f6);
+    --notify-text: var(--text-dark, var(--dark, #10364a));
+    --notify-muted: var(--text-gray, var(--muted, #4f7282));
+    --notify-font: var(--font-main, var(--font-body, 'Be Vietnam Pro', system-ui, -apple-system, sans-serif));
+}
+
+.toast-layer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.toast {
+    min-width: 280px;
+    max-width: min(92vw, 420px);
+    border-radius: 16px;
+    border: 1px solid color-mix(in srgb, var(--notify-border) 84%, white 16%);
+    background: linear-gradient(145deg,
+            color-mix(in srgb, var(--notify-surface) 34%, white 66%) 0%,
+            color-mix(in srgb, var(--notify-accent) 18%, white 82%) 100%);
+    color: var(--notify-text);
+    box-shadow: 0 16px 40px color-mix(in srgb, var(--notify-primary) 22%, transparent 78%);
+    padding: 14px 16px;
+    display: grid;
+    gap: 6px;
+    backdrop-filter: blur(8px);
+    transform: translateY(-10px);
+    opacity: 0;
+    animation: toastIn 0.28s ease forwards;
+    pointer-events: auto;
+    font-family: var(--notify-font);
+}
+
+.toast__title {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+}
+
+.toast__message {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--notify-muted);
+}
+
+.toast--success {
+    border-color: color-mix(in srgb, var(--notify-secondary) 90%, white 10%);
+}
+
+.toast--error {
+    border-color: color-mix(in srgb, var(--notify-primary) 64%, var(--notify-secondary) 36%);
+}
+
+.toast--info {
+    border-color: color-mix(in srgb, var(--notify-accent) 85%, white 15%);
+}
+
+.toast--success .toast__title {
+    color: color-mix(in srgb, var(--notify-primary) 84%, #0f6d98 16%);
+}
+
+.toast--error .toast__title {
+    color: color-mix(in srgb, var(--notify-text) 85%, var(--notify-primary) 15%);
+}
+
+.toast--info .toast__title {
+    color: color-mix(in srgb, var(--notify-primary) 72%, #0c5f88 28%);
+}
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes toastOut {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.98);
+    }
+}
+
+@media (max-width: 640px) {
+    .toast-layer {
+        left: 12px;
+        right: 12px;
+        top: 12px;
+    }
+
+    .toast {
+        min-width: 0;
+        width: 100%;
+    }
+}

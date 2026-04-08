@@ -1,0 +1,49 @@
+{
+  "users": [
+    {
+      "id": "f06dfb24-f0d4-4dfa-8d26-4495e24c531f",
+      "name": "Test User",
+      "email": "testuser@example.com",
+      "passwordHash": "$2a$10$JGqOzEBuVnUEI7CPCqDX6OdobB9ejDHaHqLmr/7thA6o.BdwlpXkS",
+      "createdAt": "2026-04-08T21:35:30.838Z"
+    }
+  ],
+  "predictions": [
+    {
+      "id": "25e29800-0607-4137-b1a9-3e3e2f3b94f5",
+      "userId": "f06dfb24-f0d4-4dfa-8d26-4495e24c531f",
+      "model": "cardio",
+      "input": {
+        "age": 46,
+        "glucose": 104,
+        "bp": 132,
+        "sex": "male",
+        "bmi": 27.1,
+        "cholesterol": 220
+      },
+      "output": {
+        "model": "cardio",
+        "riskScore": 43,
+        "band": "moderate",
+        "label": "Moderate Risk",
+        "confidence": 86,
+        "factors": [
+          "Male Risk Pattern"
+        ],
+        "habits": [
+          "Adopt a Mediterranean-style heart-safe meal plan",
+          "Reduce saturated fat and processed sugar intake",
+          "Complete 30-40 minutes brisk walk at least 5 days/week",
+          "Maintain sleep hygiene and stress reduction routine"
+        ],
+        "clinical": [
+          "Schedule physician review within 4-8 weeks",
+          "Repeat BP and fasting glucose trend check",
+          "Discuss preventive pharmacologic options if needed"
+        ],
+        "generatedAt": "2026-04-08T21:35:52.253Z"
+      },
+      "createdAt": "2026-04-08T21:35:52.254Z"
+    }
+  ]
+}

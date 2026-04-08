@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In | CuraAyur AI</title>
+  <meta name="description" content="Log in to CuraAyur AI using your email and password.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="notifications.css">
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+  <main class="auth-shell">
+    <section class="auth-layout" id="authLayout" aria-live="polite">
+      <aside class="auth-visual">
+        <div class="brand-row">
+          <a class="brand-link" href="index.html" aria-label="Go to CuraAyur AI home">CuraAyur AI</a>
+          <p class="brand-moto"><strong>Predict with Confidence</strong></p>
+        </div>
+      </aside>
+
+      <section class="auth-panel">
+        <div class="auth-toggle" role="tablist" aria-label="Authentication mode">
+          <button type="button" class="toggle-btn is-active" data-mode="login" role="tab" aria-selected="true">Log In</button>
+          <button type="button" class="toggle-btn" data-mode="signup" role="tab" aria-selected="false">Sign Up</button>
+        </div>
+
+        <div class="auth-forms">
+          <form class="auth-form login-form is-active" id="loginForm" action="#" method="post" autocomplete="on">
+            <h2>Login to your account</h2>
+            <label for="login-email">Email</label>
+            <input id="login-email" name="email" type="email" placeholder="you@example.com" required>
+
+            <label for="login-password">Password</label>
+            <input id="login-password" name="password" type="password" placeholder="Enter your password" required>
+
+            <div class="form-row">
+              <label class="remember">
+                <input type="checkbox" name="remember">
+                <span>Remember me</span>
+              </label>
+              <a href="#">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn-submit">Login now</button>
+            <button type="button" class="btn-google">
+              <span class="google-mark" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.64 9.2045C17.64 8.56637 17.5827 7.9528 17.4764 7.36364H9V10.8445H13.8436C13.635 11.97 12.9936 12.9236 12.04 13.5618V15.8191H14.9564C16.6618 14.2545 17.64 11.9636 17.64 9.2045Z" fill="#4285F4"/>
+                  <path d="M9 18C11.43 18 13.4673 17.1927 14.9564 15.8191L12.04 13.5618C11.2327 14.1018 10.2 14.4236 9 14.4236C6.65545 14.4236 4.67182 12.8436 3.96364 10.72H0.952728V13.0482C2.43364 15.9918 5.48182 18 9 18Z" fill="#34A853"/>
+                  <path d="M3.96364 10.72C3.78364 10.18 3.68182 9.60364 3.68182 9C3.68182 8.39636 3.78364 7.82 3.96364 7.28V4.95182H0.952728C0.341818 6.17636 0 7.55273 0 9C0 10.4473 0.341818 11.8236 0.952728 13.0482L3.96364 10.72Z" fill="#FBBC05"/>
+                  <path d="M9 3.57636C10.3209 3.57636 11.5073 4.03091 12.4418 4.92545L15.0218 2.34545C13.4636 0.889091 11.43 0 9 0C5.48182 0 2.43364 2.00818 0.952728 4.95182L3.96364 7.28C4.67182 5.15636 6.65545 3.57636 9 3.57636Z" fill="#EA4335"/>
+                </svg>
+              </span>
+              Continue with Google
+            </button>
+            <p class="form-switch">Don't have an account? <button type="button" class="link-btn" data-mode="signup">Sign up</button></p>
+          </form>
+
+          <form class="auth-form signup-form" id="signupForm" action="#" method="post" autocomplete="on">
+            <h2>Create an account</h2>
+            <label for="signup-name">Full Name</label>
+            <input id="signup-name" name="name" type="text" placeholder="Your full name" required>
+
+            <label for="signup-email">Email</label>
+            <input id="signup-email" name="email" type="email" placeholder="you@example.com" required>
+
+            <label for="signup-password">Password</label>
+            <input id="signup-password" name="password" type="password" placeholder="Create a password" required>
+
+            <label for="signup-confirm">Confirm Password</label>
+            <input id="signup-confirm" name="confirmPassword" type="password" placeholder="Confirm password" required>
+
+            <button type="submit" class="btn-submit">Create account</button>
+            <p class="form-switch">Already have an account? <button type="button" class="link-btn" data-mode="login">Log in</button></p>
+          </form>
+        </div>
+
+        <p class="back-home"><a href="index.html">Back to Home</a></p>
+      </section>
+    </section>
+  </main>
+
+  <script src="login.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="notifications.js"></script>
+</body>
+
+</html>

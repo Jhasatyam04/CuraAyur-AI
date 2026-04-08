@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CuraAyur AI</title>
+  <meta name="description" content="CuraAyur AI disease prediction platform with model-based risk analysis and quick health insights.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="notifications.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="app-scratch">
+  <header class="site-header">
+    <a href="#hero" class="site-logo" aria-label="CuraAyur AI Home">
+      CuraAyur AI
+    </a>
+
+    <nav class="desktop-nav">
+      <a href="#hero">Home</a>
+      <a href="#models">Models</a>
+      <span class="nav-auth nav-auth-guest">
+        <a href="login.html">Log In</a>
+        <a href="login.html#signup">Sign Up</a>
+      </span>
+      <a href="#" class="nav-auth nav-auth-user" id="desktop-logout" hidden>Log Out</a>
+      <a href="#about">About Us</a>
+    </nav>
+
+    <button class="mobile-menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="mobile-drawer" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="mobile-drawer-overlay" data-mobile-close></div>
+  <aside id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+    <button class="mobile-drawer-close" type="button" aria-label="Close navigation menu" data-mobile-close>&times;</button>
+    <nav class="mobile-drawer-nav">
+      <a href="#hero">Home</a>
+      <a href="#models">Models</a>
+      <span class="nav-auth nav-auth-guest">
+        <a href="login.html">Log In</a>
+        <a href="login.html#signup">Sign Up</a>
+      </span>
+      <a href="#" class="nav-auth nav-auth-user" id="mobile-logout" hidden>Log Out</a>
+      <a href="#about">About Us</a>
+    </nav>
+  </aside>
+
+  <main>
+    <section id="hero" class="hero-scratch">
+      <p class="eyebrow">Disease Prediction Platform</p>
+      <h1>Predict health risks with focused AI models</h1>
+      <p class="lead">CuraAyur AI unifies Cardiovascular, Diabetes, and Breast Cancer risk assessment into one streamlined clinical decision-support experience.</p>
+      <div class="actions">
+        <a href="#models" class="btn btn-primary">Explore Models</a>
+        <a href="login.html?next=index.html%23models" class="btn btn-secondary">Start Assessment</a>
+      </div>
+    </section>
+
+    <section id="models" class="models-scratch">
+      <h2>Prediction Models</h2>
+      <div class="model-grid">
+        <a class="model-card" href="cardio.html">
+          <h3>Cardio Risk</h3>
+          <p>Cardiovascular risk estimation based on patient indicators.</p>
+        </a>
+        <a class="model-card" href="diabetes.html">
+          <h3>Diabetes Risk</h3>
+          <p>Early diabetes prediction from clinical and lifestyle inputs.</p>
+        </a>
+        <a class="model-card" href="breast_cancer.html">
+          <h3>Breast Cancer Risk</h3>
+          <p>Model-assisted classification for diagnostic decision support.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="about" class="about-scratch">
+      <div class="about-head">
+        <p class="eyebrow">About Us</p>
+        <h2>Focused Prediction Models with Practical Clinical Value</h2>
+        <p>
+          CuraAyur AI is designed to support early screening and better health decisions. Our platform combines
+          structured medical inputs with validated ML pipelines to deliver quick and understandable risk insights.
+        </p>
+      </div>
+
+      <div class="about-model-grid">
+        <article class="about-model-card">
+          <h3>Cardio Prediction Model</h3>
+          <span class="model-level">Proficiency: High</span>
+          <p>
+            Optimized for cardiovascular risk assessment using factors like age, blood pressure, cholesterol,
+            and lifestyle indicators.
+          </p>
+        </article>
+
+        <article class="about-model-card">
+          <h3>Diabetes Prediction Model</h3>
+          <span class="model-level">Proficiency: High</span>
+          <p>
+            Built for early diabetes risk detection with strong reliability on glucose, BMI,
+            insulin, and clinical history features.
+          </p>
+        </article>
+
+        <article class="about-model-card">
+          <h3>Breast Cancer Prediction Model</h3>
+          <span class="model-level">Proficiency: Advanced</span>
+          <p>
+            Focused on fast, data-driven classification support from diagnostic features,
+            helping teams triage and prioritize follow-up decisions.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <h3 class="footer-brand">CuraAyur AI</h3>
+      
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook" title="Facebook">f</a>
+        <a href="#" aria-label="Twitter" title="Twitter">𝕏</a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn">in</a>
+        <a href="#" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <span class="divider">•</span>
+        <a href="#">Terms & Conditions</a>
+        <span class="divider">•</span>
+        <a href="#about">About Us</a>
+      </div>
+
+      <p class="footer-copy">© 2026 CuraAyur AI. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="auth-guard.js"></script>
+  <script src="notifications.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

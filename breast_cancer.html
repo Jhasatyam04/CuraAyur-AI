@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CuraAyur AI | Breast Cancer Risk Assessment</title>
+  <meta name="description" content="CuraAyur AI breast cancer prediction module with essential diagnostic input parameters and guided AI assessment." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="notifications.css" />
+  <link rel="stylesheet" href="cardio.css" />
+</head>
+
+<body>
+  <div class="page-shell">
+    <header class="navbar">
+      <div class="brand">
+        <div class="logo">CuraAyur<span>AI</span></div>
+        <div class="tagline-top">Breast Cancer Module</div>
+      </div>
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cardio.html">Cardio</a></li>
+          <li><a href="diabetes.html">Diabetes</a></li>
+          <li><a href="breast_cancer.html" class="active">Breast Cancer</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero reveal">
+      <div class="hero-inner">
+        <div class="module-badge">Breast Cancer Prediction</div>
+        <div class="breadcrumb">Home &#8250; Models &#8250; Breast Cancer Risk</div>
+        <h1>Breast Cancer Risk Assessment</h1>
+        <p>Provide essential diagnostic and patient context parameters to estimate breast cancer risk and support early clinical decision-making.</p>
+      </div>
+    </section>
+
+    <main class="main-content">
+      <section class="form-card reveal" aria-label="Breast cancer input form">
+        <div class="form-section">
+          <h2 class="section-title"><span class="step-dot">1</span>Patient Context</h2>
+          <div class="input-grid two-col">
+            <div class="field">
+              <label for="age">Age (years)</label>
+              <div class="input-wrap">
+                <input id="age" type="number" min="1" max="120" placeholder="e.g. 49" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="family-history">Family History of Breast Cancer</label>
+              <div class="input-wrap">
+                <select id="family-history" required>
+                  <option value="">Select</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field" style="grid-column: 1 / -1;">
+              <label for="menopause">Menopause Status</label>
+              <div class="input-wrap">
+                <select id="menopause" required>
+                  <option value="">Select</option>
+                  <option value="pre">Pre-menopausal</option>
+                  <option value="post">Post-menopausal</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2 class="section-title"><span class="step-dot">2</span>Essential Diagnostic Parameters</h2>
+          <div class="input-grid two-col">
+            <div class="field">
+              <label for="radius-mean">Radius Mean</label>
+              <div class="input-wrap">
+                <input id="radius-mean" type="number" step="0.01" placeholder="e.g. 14.2" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="texture-mean">Texture Mean</label>
+              <div class="input-wrap">
+                <input id="texture-mean" type="number" step="0.01" placeholder="e.g. 19.8" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="perimeter-mean">Perimeter Mean</label>
+              <div class="input-wrap">
+                <input id="perimeter-mean" type="number" step="0.01" placeholder="e.g. 92.5" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="area-mean">Area Mean</label>
+              <div class="input-wrap">
+                <input id="area-mean" type="number" step="0.1" placeholder="e.g. 650" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="smoothness-mean">Smoothness Mean</label>
+              <div class="input-wrap">
+                <input id="smoothness-mean" type="number" step="0.0001" placeholder="e.g. 0.102" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="concavity-mean">Concavity Mean</label>
+              <div class="input-wrap">
+                <input id="concavity-mean" type="number" step="0.0001" placeholder="e.g. 0.081" required />
+              </div>
+            </div>
+
+            <div class="field" style="grid-column: 1 / -1;">
+              <label for="concave-points-mean">Concave Points Mean</label>
+              <div class="input-wrap">
+                <input id="concave-points-mean" type="number" step="0.0001" placeholder="e.g. 0.048" required />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="analyze-wrap">
+          <button class="btn-analyze" id="analyze-btn" type="button">Analyze with CuraAyur AI</button>
+          <div class="soft-warning" id="soft-warning">Please fill all essential parameters before analyzing.</div>
+        </div>
+      </section>
+
+      <aside class="info-panel reveal" aria-label="Guidance and reference panel">
+        <article class="info-card">
+          <h3>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M11 17h2v-6h-2zm0-8h2V7h-2zm1 13C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z" />
+            </svg>
+            Why these essentials?
+          </h3>
+          <ul>
+            <li>Radius, perimeter, and area capture lesion size morphology.</li>
+            <li>Texture, smoothness, and concavity reflect tissue irregularity.</li>
+            <li>Concave points are strongly associated with malignant patterns.</li>
+          </ul>
+        </article>
+
+        <article class="info-card">
+          <h3>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 3h18v2H3zm2 4h14l-1.2 13.2A2 2 0 0 1 15.8 22H8.2a2 2 0 0 1-2-1.8zm4 4v2h6v-2zm0 4v2h4v-2z" />
+            </svg>
+            Input quality tips
+          </h3>
+          <ul>
+            <li>Use recent pathology/imaging values from verified reports.</li>
+            <li>Enter decimal values exactly as listed in diagnostics.</li>
+            <li>Avoid rounded estimates for better model reliability.</li>
+          </ul>
+        </article>
+
+        <article class="info-card privacy-card">
+          <h3>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2 4 5v6c0 5.5 3.8 10.7 8 12 4.2-1.3 8-6.5 8-12V5zm0 10a2 2 0 1 1 2-2 2 2 0 0 1-2 2zm3 6H9v-1a3 3 0 0 1 6 0z" />
+            </svg>
+            Privacy assurance
+          </h3>
+          <p>Your diagnostic inputs are processed only for this session-level assessment and can later connect to your secured backend model pipeline.</p>
+        </article>
+      </aside>
+    </main>
+
+    <section class="result" id="result-section" aria-live="polite">
+      <div class="result-wrapper">
+        <div class="result-head">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 4h18v16H3zm2 2v12h14V6zm2 2h10v2H7zm0 4h6v2H7z" />
+          </svg>
+          <h2>CuraAyur AI Result - Breast Cancer</h2>
+        </div>
+
+        <div class="result-grid">
+          <article class="result-col">
+            <h4>RISK GAUGE</h4>
+            <div class="gauge">
+              <svg viewBox="0 0 200 120" aria-hidden="true">
+                <path class="gauge-bg" d="M20 100 A80 80 0 0 1 180 100" />
+                <path class="gauge-value" id="gauge-value" d="M20 100 A80 80 0 0 1 180 100" />
+              </svg>
+              <div class="gauge-score" id="risk-score">--%</div>
+            </div>
+            <span class="risk-badge" id="risk-badge">Awaiting Data</span>
+            <p class="confidence" id="confidence-text">Confidence: --%</p>
+            <div class="factor-tags" id="factor-tags"></div>
+          </article>
+
+          <article class="result-col">
+            <h4>CARE AND LIFESTYLE GUIDANCE</h4>
+            <ul id="habit-list"></ul>
+          </article>
+
+          <article class="result-col">
+            <h4>CLINICAL NEXT STEPS</h4>
+            <ul id="clinical-list"></ul>
+          </article>
+        </div>
+
+        <div class="disclaimer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M1 21h22L12 2zm12-3h-2v2h2zm0-8h-2v6h2z" />
+          </svg>
+          <p>CuraAyur AI predictions are informational only. Always seek clinical confirmation and specialist guidance for diagnosis and treatment planning.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-logo">CuraAyur<span>AI</span></div>
+        <p class="footer-tagline">Predictive intelligence for proactive healthcare.</p>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+        </div>
+        <p class="copyright">&copy; 2026 CuraAyur AI. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="auth-guard.js"></script>
+  <script src="notifications.js"></script>
+  <script src="breast_cancer.js"></script>
+</body>
+
+</html>

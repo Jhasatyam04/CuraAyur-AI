@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CuraAyur AI | Diabetes Risk Assessment</title>
+  <meta name="description" content="CuraAyur AI diabetes prediction module with essential clinical inputs and guided AI risk assessment." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="notifications.css" />
+  <link rel="stylesheet" href="cardio.css" />
+</head>
+
+<body>
+  <div class="page-shell">
+    <header class="navbar">
+      <div class="brand">
+        <div class="logo">CuraAyur<span>AI</span></div>
+        <div class="tagline-top">Diabetes Module</div>
+      </div>
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cardio.html">Cardio</a></li>
+          <li><a href="diabetes.html" class="active">Diabetes</a></li>
+          <li><a href="breast_cancer.html">Breast Cancer</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero reveal">
+      <div class="hero-inner">
+        <div class="module-badge">Diabetes Disease Prediction</div>
+        <div class="breadcrumb">Home &#8250; Models &#8250; Diabetes Risk</div>
+        <h1>Diabetes Risk Assessment</h1>
+        <p>Provide essential metabolic and lifestyle indicators to estimate diabetes risk. This module supports early screening and preventive intervention planning.</p>
+      </div>
+    </section>
+
+    <main class="main-content">
+      <section class="form-card reveal" aria-label="Diabetes input form">
+        <div class="form-section">
+          <h2 class="section-title"><span class="step-dot">1</span>Personal Metrics</h2>
+          <div class="input-grid two-col">
+            <div class="field">
+              <label for="age">Age (years)</label>
+              <div class="input-wrap">
+                <input id="age" type="number" min="1" max="120" placeholder="e.g. 42" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Sex</label>
+              <div class="sex-toggle" role="radiogroup" aria-label="Select sex">
+                <button type="button" class="sex-pill active" data-sex="male" aria-pressed="true">Male</button>
+                <button type="button" class="sex-pill" data-sex="female" aria-pressed="false">Female</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="weight">Weight (kg)</label>
+              <div class="input-wrap has-unit">
+                <input id="weight" type="number" min="1" placeholder="e.g. 75" required />
+                <span class="unit">kg</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="height">Height (cm)</label>
+              <div class="input-wrap has-unit">
+                <input id="height" type="number" min="1" placeholder="e.g. 168" required />
+                <span class="unit">cm</span>
+              </div>
+            </div>
+
+            <div class="field" style="grid-column: 1 / -1;">
+              <label>BMI (auto calculated)</label>
+              <div class="bmi-display">
+                <div class="bmi-text" id="bmi-value">BMI: --</div>
+                <div class="bmi-chip" id="bmi-category" style="color: var(--muted);">Awaiting input</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2 class="section-title"><span class="step-dot">2</span>Essential Clinical Inputs</h2>
+          <div class="input-grid two-col">
+            <div class="field">
+              <label for="glucose">Fasting Glucose (mg/dl)</label>
+              <div class="input-wrap has-unit">
+                <input id="glucose" type="number" placeholder="e.g. 108" required />
+                <span class="unit">mg/dl</span>
+              </div>
+              <div class="helper">Normal fasting: 70-99 mg/dl</div>
+            </div>
+
+            <div class="field">
+              <label for="hba1c">HbA1c (%)</label>
+              <div class="input-wrap has-unit">
+                <input id="hba1c" type="number" step="0.1" placeholder="e.g. 5.8" required />
+                <span class="unit">%</span>
+              </div>
+              <div class="helper">Normal: below 5.7%</div>
+            </div>
+
+            <div class="field">
+              <label for="bp">Blood Pressure (systolic mmHg)</label>
+              <div class="input-wrap has-unit">
+                <input id="bp" type="number" placeholder="e.g. 128" required />
+                <span class="unit">mmHg</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="family-history">Family History of Diabetes</label>
+              <div class="input-wrap">
+                <select id="family-history" required>
+                  <option value="">Select</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field" style="grid-column: 1 / -1;">
+              <label for="activity">Physical Activity Level</label>
+              <div class="input-wrap">
+                <select id="activity" required>
+                  <option value="">Select</option>
+                  <option value="high">High (5+ sessions/week)</option>
+                  <option value="moderate">Moderate (2-4 sessions/week)</option>
+                  <option value="low">Low (0-1 session/week)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="analyze-wrap">
+          <button class="btn-analyze" id="analyze-btn" type="button">Analyze with CuraAyur AI</button>
+          <div class="soft-warning" id="soft-warning">Please fill all required essential inputs before analyzing.</div>
+        </div>
+      </section>
+
+      <aside class="info-panel reveal" aria-label="Guidance and reference panel">
+        <article class="info-card">
+          <h3>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M11 17h2v-6h-2zm0-8h2V7h-2zm1 13C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z" />
+            </svg>
+            Why these essentials?
+          </h3>
+          <ul>
+            <li>Fasting glucose and HbA1c are primary diabetic markers.</li>
+            <li>BMI and blood pressure reflect metabolic and vascular stress.</li>
+            <li>Family history and physical activity improve risk context.</li>
+          </ul>
+        </article>
+
+        <article class="info-card">
+          <h3>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 3h18v2H3zm2 4h14l-1.2 13.2A2 2 0 0 1 15.8 22H8.2a2 2 0 0 1-2-1.8zm4 4v2h6v-2zm0 4v2h4v-2z" />
+            </svg>
+            Data quality tips
+          </h3>
+          <ul>
+            <li>Prefer recent lab values (last 3-6 months).</li>
+            <li>Use fasting glucose for consistent interpretation.</li>
+            <li>Enter blood pressure from a rested measurement.</li>
+          </ul>
+        </article>
+
+        <article class="info-card privacy-card">
+          <h3>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2 4 5v6c0 5.5 3.8 10.7 8 12 4.2-1.3 8-6.5 8-12V5zm0 10a2 2 0 1 1 2-2 2 2 0 0 1-2 2zm3 6H9v-1a3 3 0 0 1 6 0z" />
+            </svg>
+            Privacy assurance
+          </h3>
+          <p>Your data is used only for this session-level assessment and can later connect to your secure model backend.</p>
+        </article>
+      </aside>
+    </main>
+
+    <section class="result" id="result-section" aria-live="polite">
+      <div class="result-wrapper">
+        <div class="result-head">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 4h18v16H3zm2 2v12h14V6zm2 2h10v2H7zm0 4h6v2H7z" />
+          </svg>
+          <h2>CuraAyur AI Result - Diabetes</h2>
+        </div>
+
+        <div class="result-grid">
+          <article class="result-col">
+            <h4>RISK GAUGE</h4>
+            <div class="gauge">
+              <svg viewBox="0 0 200 120" aria-hidden="true">
+                <path class="gauge-bg" d="M20 100 A80 80 0 0 1 180 100" />
+                <path class="gauge-value" id="gauge-value" d="M20 100 A80 80 0 0 1 180 100" />
+              </svg>
+              <div class="gauge-score" id="risk-score">--%</div>
+            </div>
+            <span class="risk-badge" id="risk-badge">Awaiting Data</span>
+            <p class="confidence" id="confidence-text">Confidence: --%</p>
+            <div class="factor-tags" id="factor-tags"></div>
+          </article>
+
+          <article class="result-col">
+            <h4>LIFESTYLE RECOMMENDATIONS</h4>
+            <ul id="habit-list"></ul>
+          </article>
+
+          <article class="result-col">
+            <h4>CLINICAL SUGGESTIONS</h4>
+            <ul id="clinical-list"></ul>
+          </article>
+        </div>
+
+        <div class="disclaimer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M1 21h22L12 2zm12-3h-2v2h2zm0-8h-2v6h2z" />
+          </svg>
+          <p>CuraAyur AI predictions are informational only. Consult a licensed healthcare professional before making medical decisions.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-logo">CuraAyur<span>AI</span></div>
+        <p class="footer-tagline">Predictive intelligence for proactive healthcare.</p>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+        </div>
+        <p class="copyright">&copy; 2026 CuraAyur AI. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="auth-guard.js"></script>
+  <script src="notifications.js"></script>
+  <script src="diabetes.js"></script>
+</body>
+
+</html>

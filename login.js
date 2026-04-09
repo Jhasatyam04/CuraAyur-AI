@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Skip all auth - redirect directly to home
-  window.location.href = "index.html";
+  window.location.href = "cardio.html";
 });
   const notify = (message, options = {}) => {
     if (window.CuraAyurNotify && typeof window.CuraAyurNotify.show === "function") {

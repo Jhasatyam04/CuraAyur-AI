@@ -98,12 +98,23 @@ body {
 }
 
 .site-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
     color: var(--text-dark);
     font-family: 'THICCCBOI', var(--font-main);
     font-size: 24px;
     font-weight: 500;
     animation: textRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.site-logo-image {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
 }
 
 .desktop-nav {
@@ -486,11 +497,22 @@ h1 {
 }
 
 .footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-size: 24px;
     font-weight: 600;
     color: var(--text-dark);
     margin: 0;
     animation: textGlow 5s ease-in-out infinite;
+}
+
+.footer-logo-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
 }
 
 .footer-social {

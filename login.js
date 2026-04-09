@@ -1,7 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Skip all auth - redirect directly to home
-  window.location.href = "cardio.html";
-});
+  const AUTH_KEY = "curaayurAuth";
+  const SESSION_KEY = "curaayurSession";
+
+  const getApiBaseUrl = () => {
+    if (window.location.protocol === "file:") {
+      return "http://localhost:5000/api";
+    }
+
+    const host = window.location.hostname;
+    if (host === "localhost" || host === "127.0.0.1") {
+      return "http://localhost:5000/api";
+    }
+
+    return `${window.location.origin}/api`;
+  };
+
+  const API_BASE = getApiBaseUrl();
+
   const notify = (message, options = {}) => {
     if (window.CuraAyurNotify && typeof window.CuraAyurNotify.show === "function") {
       window.CuraAyurNotify.show(message, options);
@@ -173,7 +188,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (formsWrapper) {
       formsWrapper.classList.remove("is-switching");
-      // Restart animation reliably on repeated toggles.
       void formsWrapper.offsetWidth;
       formsWrapper.classList.add("is-switching");
       window.setTimeout(() => formsWrapper.classList.remove("is-switching"), 460);

@@ -52,10 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const getRedirectPath = () => {
-    if (isSafeInternalPath(nextPath)) {
-      return nextPath;
-    }
-    return "index.html";
+    return "cardio.html";
   };
 
   if (isSafeInternalPath(nextPath)) {

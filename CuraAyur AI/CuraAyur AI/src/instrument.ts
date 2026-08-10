@@ -1,0 +1,9 @@
+import * as Sentry from "@sentry/node";
+import { config } from "./config/unifiedConfig";
+
+if (config.sentry.dsn) {
+  Sentry.init({
+    dsn: config.sentry.dsn,
+    tracesSampleRate: 1.0,
+  });
+}

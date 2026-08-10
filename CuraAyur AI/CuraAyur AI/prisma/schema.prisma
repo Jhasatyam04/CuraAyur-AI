@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  predictions Prediction[]
+}
+
+model Prediction {
+  id             String   @id @default(uuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id])
+  type           String   // e.g., "breast_cancer", "diabetes"
+  inputData      String   // JSON stringified input parameters
+  predictionResult String // Output from the ML model
+  recommendation String?  // Output from Generative AI
+  createdAt      DateTime @default(now())
+}

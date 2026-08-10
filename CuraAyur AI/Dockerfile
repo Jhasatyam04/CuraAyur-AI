@@ -22,13 +22,13 @@ ENV PATH="/opt/venv/bin:$PATH"
 RUN pip install --no-cache-dir -r /app/fl_prediction_engine/requirements.txt
 
 # Copy Node.js package.json and install dependencies
-COPY "CuraAyur AI/package*.json" "/app/CuraAyur AI/"
+COPY ["CuraAyur AI/package*.json", "/app/CuraAyur AI/"]
 WORKDIR "/app/CuraAyur AI"
 RUN npm install
 
 # Copy all the rest of the application files
 COPY fl_prediction_engine /app/fl_prediction_engine
-COPY "CuraAyur AI" "/app/CuraAyur AI"
+COPY ["CuraAyur AI", "/app/CuraAyur AI"]
 
 # Build TypeScript if necessary (assuming there's a build script)
 RUN npm run build || echo "No build script found, skipping"
